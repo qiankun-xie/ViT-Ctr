@@ -89,39 +89,39 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SIM-01 | — | Pending |
-| SIM-02 | — | Pending |
-| SIM-03 | — | Pending |
-| SIM-04 | — | Pending |
-| ENC-01 | — | Pending |
-| ENC-02 | — | Pending |
-| TRN-01 | — | Pending |
-| TRN-02 | — | Pending |
-| TRN-03 | — | Pending |
-| EVL-01 | — | Pending |
-| EVL-02 | — | Pending |
-| EVL-03 | — | Pending |
-| EVL-04 | — | Pending |
-| VAL-01 | — | Pending |
-| VAL-02 | — | Pending |
-| VAL-03 | — | Pending |
-| UQ-01 | — | Pending |
-| UQ-02 | — | Pending |
-| APP-01 | — | Pending |
-| APP-02 | — | Pending |
-| APP-03 | — | Pending |
-| APP-04 | — | Pending |
-| APP-05 | — | Pending |
-| APP-06 | — | Pending |
-| PAP-01 | — | Pending |
-| PAP-02 | — | Pending |
-| PAP-03 | — | Pending |
+| SIM-01 | Phase 1 | Pending |
+| SIM-02 | Phase 1 | Pending |
+| SIM-03 | Phase 1 | Pending |
+| SIM-04 | Phase 2 | Pending |
+| ENC-01 | Phase 1 | Pending |
+| ENC-02 | Phase 1 | Pending |
+| TRN-01 | Phase 3 | Pending |
+| TRN-02 | Phase 3 | Pending |
+| TRN-03 | Phase 3 | Pending |
+| EVL-01 | Phase 3 | Pending |
+| EVL-02 | Phase 3 | Pending |
+| EVL-03 | Phase 3 | Pending |
+| EVL-04 | Phase 4 | Pending |
+| VAL-01 | Phase 4 | Pending |
+| VAL-02 | Phase 4 | Pending |
+| VAL-03 | Phase 4 | Pending |
+| UQ-01 | Phase 3 | Pending |
+| UQ-02 | Phase 3 | Pending |
+| APP-01 | Phase 5 | Pending |
+| APP-02 | Phase 5 | Pending |
+| APP-03 | Phase 5 | Pending |
+| APP-04 | Phase 5 | Pending |
+| APP-05 | Phase 5 | Pending |
+| APP-06 | Phase 5 | Pending |
+| PAP-01 | Phase 6 | Pending |
+| PAP-02 | Phase 6 | Pending |
+| PAP-03 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 27 total
-- Mapped to phases: 0
-- Unmapped: 27 ⚠️
+- Mapped to phases: 27
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-24*
-*Last updated: 2026-03-24 after initial definition*
+*Last updated: 2026-03-24 after roadmap creation — all 27 requirements mapped*
