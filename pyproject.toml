@@ -1,0 +1,25 @@
+[project]
+name = "vit-ctr"
+version = "0.1.0"
+description = "Vision Transformer for RAFT chain transfer constant prediction"
+requires-python = ">=3.11"
+dependencies = [
+    "torch>=2.6",
+    "torchvision",
+    "scipy>=1.15",
+    "numpy>=2.2",
+    "matplotlib>=3.10",
+    "pandas>=2.2",
+    "openpyxl>=3.1",
+    "h5py",
+    "joblib>=1.4",
+    "tqdm>=4.0",
+    "streamlit>=1.41",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "src"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+]
