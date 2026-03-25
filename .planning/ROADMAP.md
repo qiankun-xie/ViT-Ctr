@@ -30,7 +30,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. The two-stage pre-equilibrium mechanism for dithioesters produces visibly distinct Mn/D curves from the single-equilibrium model, confirming the physically correct branch is implemented
   3. The ctFP encoder produces a 64×64×2 tensor from raw (CTA ratio, conversion, Mn, D) input, and the same function imported in both training and web-app contexts produces byte-identical outputs
   4. A 1,000-sample diagnostic dataset can be generated covering the full Ctr range (log10 = -1 to 4) across all four RAFT agent classes without numerical failures
-**Plans**: TBD
+**Plans:** 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — RAFT ODE system (single-eq + pre-eq models) with tests
+- [ ] 01-02-PLAN.md — ctFP encoder with tests
+- [ ] 01-03-PLAN.md — ODE validation against literature + diagnostic dataset
 
 ### Phase 2: Large-Scale Dataset Generation
 **Goal**: A validated ~1M sample ctFP dataset is stored in chunked HDF5 on Google Drive, ready for Colab training, stratified across all RAFT agent classes and the full Ctr parameter space
@@ -95,7 +99,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. ODE Foundation and ctFP Encoder | 0/? | Not started | - |
+| 1. ODE Foundation and ctFP Encoder | 0/3 | Planning complete | - |
 | 2. Large-Scale Dataset Generation | 0/? | Not started | - |
 | 3. Model Training and Evaluation | 0/? | Not started | - |
 | 4. Literature Validation and Mayo Baseline | 0/? | Not started | - |
@@ -104,4 +108,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-03-24 after initial roadmap creation*
+*Last updated: 2026-03-25 after Phase 1 planning — 3 plans created*
