@@ -376,10 +376,10 @@ def main():
     print(f"\n  Total samples: {total_samples}")
 
     if all_passed:
-        print("\n  Dataset validation PASSED")
+        print("\n  [OK] Dataset validation PASSED")
     else:
         failed_checks = [name for name, passed in checks if not passed]
-        print(f"\n  Dataset validation FAILED: {', '.join(failed_checks)}")
+        print(f"\n  [!!] Dataset validation FAILED: {', '.join(failed_checks)}")
 
     return 0 if all_passed else 1
 
