@@ -12,13 +12,11 @@
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] RAFT动力学ODE模型，支持所有RAFT剂类型的正向模拟 — Validated in Phase 1: ODE Foundation and ctFP Encoder
+- [x] ctFP指纹编码：64×64双通道图像（Mn通道 + Đ通道），x轴=[CTA]/[M]，y轴=conversion — Validated in Phase 1: ODE Foundation and ctFP Encoder
+- [x] 百万级合成训练数据集生成（遍历Ctr、kadd/kfrag、[CTA]/[M]等参数空间）— Validated in Phase 2: Large-Scale Dataset Generation (code complete, ready for execution)
 
 ### Active
-
-- [ ] RAFT动力学ODE模型，支持所有RAFT剂类型的正向模拟
-- [ ] ctFP指纹编码：64×64双通道图像（Mn通道 + Đ通道），x轴=[CTA]/[M]，y轴=conversion
-- [ ] 百万级合成训练数据集生成（遍历Ctr、kadd/kfrag、[CTA]/[M]等参数空间）
 - [ ] SimpViT模型训练，输出三参数：log10(Ctr)、inhibition period、retardation factor
 - [ ] Bootstrap不确定性估计（200次迭代 + F分布置信区间）
 - [ ] 文献实验数据验证（与已发表的Ctr值对比）
@@ -83,5 +81,9 @@ This document evolves at phase transitions and milestone boundaries.
 3. Audit Out of Scope — reasons still valid?
 4. Update Context with current state
 
+## Current State
+
+Phase 2 complete — Dataset generation pipeline implemented and validated. LHS parameter sampling, parallel ODE simulation with joblib, chunked HDF5 storage, and validation/upload tooling all verified. Ready for full-scale ~1M sample generation before Phase 3 training.
+
 ---
-*Last updated: 2026-03-24 after initialization*
+*Last updated: 2026-03-27 after Phase 2 completion*
