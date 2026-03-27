@@ -9,15 +9,15 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### 动力学模拟
 
-- [ ] **SIM-01**: 用户可通过RAFT动力学ODE模型正向模拟任意Ctr下的Mn-转化率和Đ-转化率曲线
-- [ ] **SIM-02**: ODE模型支持所有RAFT剂类型（dithioester、trithiocarbonate、xanthate、dithiocarbamate），含两阶段预平衡机制
-- [ ] **SIM-03**: 参数空间覆盖Ctr~0.01-10000、[CTA]/[M]~0.001-0.1、kadd/kfrag比、温度40-120°C
+- [x] **SIM-01**: 用户可通过RAFT动力学ODE模型正向模拟任意Ctr下的Mn-转化率和Đ-转化率曲线
+- [x] **SIM-02**: ODE模型支持所有RAFT剂类型（dithioester、trithiocarbonate、xanthate、dithiocarbamate），含两阶段预平衡机制
+- [x] **SIM-03**: 参数空间覆盖Ctr~0.01-10000、[CTA]/[M]~0.001-0.1、kadd/kfrag比、温度40-120°C
 - [ ] **SIM-04**: 百万级数据集并行生成（joblib），存储为HDF5格式
 
 ### 指纹编码
 
-- [ ] **ENC-01**: 实验数据编码为64×64双通道ctFP图像（Ch1=Mn, Ch2=Đ），x轴=[CTA]/[M], y轴=conversion
-- [ ] **ENC-02**: ctFP编码函数在训练管线和Web应用中共享同一实现，防止编码不一致
+- [x] **ENC-01**: 实验数据编码为64×64双通道ctFP图像（Ch1=Mn, Ch2=Đ），x轴=[CTA]/[M], y轴=conversion
+- [x] **ENC-02**: ctFP编码函数在训练管线和Web应用中共享同一实现，防止编码不一致
 
 ### 模型训练
 
@@ -27,9 +27,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### 模型评估
 
-- [ ] **EVL-01**: 在测试集上报告每个输出参数的R²、RMSE、MAE
-- [ ] **EVL-02**: 绘制每个输出参数的parity图（预测值 vs. 真实值）
-- [ ] **EVL-03**: 按RAFT剂类型分别评估模型性能，生成分类别parity图
+- [x] **EVL-01**: 在测试集上报告每个输出参数的R²、RMSE、MAE
+- [x] **EVL-02**: 绘制每个输出参数的parity图（预测值 vs. 真实值）
+- [x] **EVL-03**: 按RAFT剂类型分别评估模型性能，生成分类别parity图
 - [ ] **EVL-04**: 实现Mayo方程基线，在相同文献验证集上对比ML方法与传统方法的准确度
 
 ### 文献验证
@@ -89,18 +89,18 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SIM-01 | Phase 1 | Pending |
-| SIM-02 | Phase 1 | Pending |
-| SIM-03 | Phase 1 | Pending |
+| SIM-01 | Phase 1 | Complete |
+| SIM-02 | Phase 1 | Complete |
+| SIM-03 | Phase 1 | Complete |
 | SIM-04 | Phase 2 | Pending |
-| ENC-01 | Phase 1 | Pending |
-| ENC-02 | Phase 1 | Pending |
+| ENC-01 | Phase 1 | Complete |
+| ENC-02 | Phase 1 | Complete |
 | TRN-01 | Phase 3 | Pending |
 | TRN-02 | Phase 3 | Pending |
 | TRN-03 | Phase 3 | Pending |
-| EVL-01 | Phase 3 | Pending |
-| EVL-02 | Phase 3 | Pending |
-| EVL-03 | Phase 3 | Pending |
+| EVL-01 | Phase 3 | Complete |
+| EVL-02 | Phase 3 | Complete |
+| EVL-03 | Phase 3 | Complete |
 | EVL-04 | Phase 4 | Pending |
 | VAL-01 | Phase 4 | Pending |
 | VAL-02 | Phase 4 | Pending |

@@ -64,7 +64,7 @@ Plans:
 - [x] 03-01-PLAN.md — SimpViT model (num_outputs=3) + metrics and visualization utilities
 - [x] 03-02-PLAN.md — Data pipeline: stratified split, CombinedHDF5Dataset, per-class evaluation stub
 - [x] 03-03-PLAN.md — Training loop: weighted MSE, EarlyStopper, Colab training notebook
-- [ ] 03-04-PLAN.md — Evaluation: parity plots, per-class metrics, residual analysis
+- [x] 03-04-PLAN.md — Evaluation: parity plots, per-class metrics, residual analysis
 - [ ] 03-05-PLAN.md — Bootstrap UQ: freeze backbone, 200 heads, F-dist JCI, post-hoc calibration
 
 ### Phase 4: Literature Validation and Mayo Baseline
