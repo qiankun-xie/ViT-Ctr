@@ -59,7 +59,13 @@ Plans:
   2. Test-set parity plots for all three parameters show tight clustering around the identity line, with R² reported per output
   3. Per-RAFT-agent-class evaluation shows acceptable performance across all four RAFT classes
   4. Bootstrap 95% CI coverage on a held-out calibration set reaches the nominal level (or a scalar correction is documented and applied)
-**Plans**: TBD
+**Plans**: 5 plans
+Plans:
+- [ ] 03-01-PLAN.md — SimpViT model (num_outputs=3) + metrics and visualization utilities
+- [x] 03-02-PLAN.md — Data pipeline: stratified split, CombinedHDF5Dataset, per-class evaluation stub
+- [ ] 03-03-PLAN.md — Training loop: weighted MSE, EarlyStopper, Colab training notebook
+- [ ] 03-04-PLAN.md — Evaluation: parity plots, per-class metrics, residual analysis
+- [ ] 03-05-PLAN.md — Bootstrap UQ: freeze backbone, 200 heads, F-dist JCI, post-hoc calibration
 
 ### Phase 4: Literature Validation and Mayo Baseline
 **Goal**: The trained model is validated against 10+ published Ctr values spanning multiple RAFT agent classes and measurement methods, with fold-errors reported and a Mayo equation baseline comparison included
@@ -104,11 +110,11 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. ODE Foundation and ctFP Encoder | 3/3 | Complete | 2026-03-26 |
 | 2. Large-Scale Dataset Generation | 2/2 | Complete | 2026-03-27 |
-| 3. Model Training and Evaluation | 0/? | Not started | - |
+| 3. Model Training and Evaluation | 1/5 | In Progress | - |
 | 4. Literature Validation and Mayo Baseline | 0/? | Not started | - |
 | 5. Streamlit Web Application | 0/? | Not started | - |
 | 6. Paper and Supporting Information | 0/? | Not started | - |
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-03-27 after Plan 02-02 complete — Phase 02 finished (validation + upload scripts)*
+*Last updated: 2026-03-27 after Phase 03 Plan 02 — data pipeline (split + dataset + evaluate) complete*

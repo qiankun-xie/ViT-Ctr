@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to plan
-stopped_at: Phase 3 context gathered
-last_updated: "2026-03-27T08:08:01.571Z"
+status: Executing Phase 03
+stopped_at: Phase 3 Plan 02 complete — data pipeline ready (split + dataset + evaluate)
+last_updated: "2026-03-27T10:00:00.000Z"
 progress:
   total_phases: 6
   completed_phases: 2
-  total_plans: 5
-  completed_plans: 5
+  total_plans: 10
+  completed_plans: 6
 ---
 
 # Project State
@@ -19,13 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** 一次输入实验数据，同时提取Ctr、诱导期和减速因子三个参数——传统方法需要三组独立实验才能分别获得。
-**Current focus:** Phase 02 complete, Phase 03 next
+**Current focus:** Phase 03 — model-training-and-evaluation
 
 ## Current Position
 
-Phase: 03
-Plan: Not started
-Next: Phase 03 (model-training-and-evaluation)
+Phase: 03 (model-training-and-evaluation) — EXECUTING
+Plan: 2 of 5 — COMPLETE (Plan 02)
 
 ## Performance Metrics
 
@@ -46,6 +45,7 @@ Next: Phase 03 (model-training-and-evaluation)
 
 | Plan | Duration | Tasks | Files |
 |------|----------|-------|-------|
+| Phase 03 P02 | ~8min | 2 tasks | 7 files |
 | Phase 02 P02 | ~8min | 2 tasks | 3 files |
 | Phase 02 P01 | ~15min | 2 tasks | 1 file |
 | Phase 01 P03 | ~15min | 2 tasks | 3 files |
@@ -72,20 +72,33 @@ Recent decisions affecting current work:
 - [Phase 02]: joblib prefer='processes' 用于大规模并行生成（避免GIL瓶颈）
 - [Phase 02]: No automated Google Drive upload — manual upload with step-by-step instructions; OAuth overhead not justified
 - [Phase 02]: Dataset info auto-generated from HDF5 files; upload_to_gdrive.py regenerates 02-DATASET-INFO.md
+- [Phase 03]: Wave 0 gate in Colab notebook — raises RuntimeError if HDF5 files missing or < 100K samples
+- [Phase 03]: Lightweight bootstrap: freeze backbone (fc layer only), 200 × 5-epoch head fine-tuning; NOT input-perturbation bootstrap
+- [Phase 03]: F-distribution JCI uses p=3 (changed from ViT-RR p=2); f.ppf(0.95, dfn=3, dfd=197) ≈ 2.65
+- [Phase 03]: Retardation factor ≈ 1.0 for TTC/xanthate/dithiocarbamate is EXPECTED, not a model failure
+- [Phase 03]: weights_only=False required for torch.load of bootstrap_heads.pth (contains list of dicts)
+- [Phase 03 P02]: CombinedHDF5Dataset uses self._handles=None + _get_handles() lazy pattern — critical for fork safety with num_workers>0
+- [Phase 03 P02]: build_stratified_indices returns (file_idx, sample_idx, class_id) tuples; class_id == file_idx (RAFT type derived from file position)
+- [Phase 03 P02]: evaluate.py compute_outlier_stats included now (Plan 04 dependency) but not tested in Wave 0
 
 ### Pending Todos
 
 - Run actual large-scale generation: `python src/dataset_generator.py` (~hours of CPU time)
 - Upload generated HDF5 files to Google Drive and fill in file IDs in 02-DATASET-INFO.md
+- Execute Phase 3 plans in order: Wave 0 (plans 01+02 parallel) → Wave 1 (plan 03) → Wave 2 (plan 04) → Wave 3 (plan 05)
+- Run colab/03-train-colab.ipynb on Colab T4 after full HDF5 dataset is on Drive
+- Run colab/03-bootstrap-colab.ipynb after training completes
+- Download best_model.pth, bootstrap_heads.pth, calibration.json to local checkpoints/
 
 ### Blockers/Concerns
 
 - Phase 1 (resolved): RAFT two-stage pre-equilibrium ODE moment equations verified through literature validation
-- Phase 1 (noted): Retardation factor ~1.0 for all tested systems — normalization strategy still open for Phase 3
+- Phase 1 (noted): Retardation factor ~1.0 for all tested systems — confirmed as expected behavior, documented in evaluate.py
+- Phase 3 (pending): Full ~1M sample dataset not yet on Google Drive — Phase 3 local tests only work in debug mode (38 samples)
 - Phase 4: Preliminary literature survey for 10+ Ctr validation points should begin early to confirm sufficient published data exists before training completes
 
 ## Session Continuity
 
-Last session: 2026-03-27T08:08:01.567Z
-Stopped at: Phase 3 context gathered
-Resume file: .planning/phases/03-model-training-and-evaluation/03-CONTEXT.md
+Last session: 2026-03-27T09:00:00.000Z
+Stopped at: Phase 3 planned — 5 plans across 4 waves
+Resume file: .planning/phases/03-model-training-and-evaluation/03-03-PLAN.md (next plan to execute)
