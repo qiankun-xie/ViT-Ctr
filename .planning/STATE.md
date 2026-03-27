@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Executing Phase 03
-stopped_at: Phase 3 Plan 02 complete — data pipeline ready (split + dataset + evaluate)
-last_updated: "2026-03-27T10:00:00.000Z"
+stopped_at: Phase 3 Plan 03 complete — training loop (train.py) + Colab notebook + debug notebook
+last_updated: "2026-03-27T11:00:00.000Z"
 progress:
   total_phases: 6
   completed_phases: 2
   total_plans: 10
-  completed_plans: 6
+  completed_plans: 7
 ---
 
 # Project State
@@ -24,7 +24,7 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 03 (model-training-and-evaluation) — EXECUTING
-Plan: 2 of 5 — COMPLETE (Plan 02)
+Plan: 3 of 5 — COMPLETE (Plan 03)
 
 ## Performance Metrics
 
@@ -45,6 +45,7 @@ Plan: 2 of 5 — COMPLETE (Plan 02)
 
 | Plan | Duration | Tasks | Files |
 |------|----------|-------|-------|
+| Phase 03 P03 | ~20min | 2 tasks | 9 files |
 | Phase 03 P02 | ~8min | 2 tasks | 7 files |
 | Phase 02 P02 | ~8min | 2 tasks | 3 files |
 | Phase 02 P01 | ~15min | 2 tasks | 1 file |
@@ -80,6 +81,9 @@ Recent decisions affecting current work:
 - [Phase 03 P02]: CombinedHDF5Dataset uses self._handles=None + _get_handles() lazy pattern — critical for fork safety with num_workers>0
 - [Phase 03 P02]: build_stratified_indices returns (file_idx, sample_idx, class_id) tuples; class_id == file_idx (RAFT type derived from file position)
 - [Phase 03 P02]: evaluate.py compute_outlier_stats included now (Plan 04 dependency) but not tested in Wave 0
+- [Phase 03 P03]: weights_only=True for load_checkpoint of base model (safe); weights_only=False still needed for bootstrap_heads.pth (Plan 05)
+- [Phase 03 P03]: num_workers=0 default on Windows; Colab passes --num_workers 2 via CLI
+- [Phase 03 P03]: JSON training_log.json appended and rewritten per epoch (simple, not perf-critical)
 
 ### Pending Todos
 
@@ -99,6 +103,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-27T09:00:00.000Z
-Stopped at: Phase 3 planned — 5 plans across 4 waves
-Resume file: .planning/phases/03-model-training-and-evaluation/03-03-PLAN.md (next plan to execute)
+Last session: 2026-03-27T11:00:00.000Z
+Stopped at: Plan 03-03 complete — training loop + Colab notebook done
+Resume file: .planning/phases/03-model-training-and-evaluation/03-04-PLAN.md (next plan)
