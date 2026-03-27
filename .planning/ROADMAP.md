@@ -12,8 +12,8 @@ Build a deep learning system that extracts three RAFT kinetic parameters simulta
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: ODE Foundation and ctFP Encoder** - Validate RAFT kinetic ODE and freeze the shared fingerprint encoder
-- [ ] **Phase 2: Large-Scale Dataset Generation** - Generate ~1M synthetic ctFP samples in chunked HDF5 format
+- [x] **Phase 1: ODE Foundation and ctFP Encoder** - Validate RAFT kinetic ODE and freeze the shared fingerprint encoder
+- [x] **Phase 2: Large-Scale Dataset Generation** - Generate ~1M synthetic ctFP samples in chunked HDF5 format
 - [ ] **Phase 3: Model Training and Evaluation** - Train SimpViT with 3-parameter output; evaluate with bootstrap UQ
 - [ ] **Phase 4: Literature Validation and Mayo Baseline** - Curate published Ctr values; compare model vs. Mayo equation
 - [ ] **Phase 5: Streamlit Web Application** - Deploy interactive app with manual/Excel input, CI display, ctFP preview
