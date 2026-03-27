@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Ready to execute
-stopped_at: Completed 03-04-PLAN.md — evaluation module with figure generation and notebook
-last_updated: "2026-03-27T09:37:32.762Z"
+stopped_at: Completed 03-05-PLAN.md — bootstrap UQ with F-distribution JCI and calibration
+last_updated: "2026-03-27T09:47:54.031Z"
 progress:
   total_phases: 6
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 10
-  completed_plans: 9
+  completed_plans: 10
 ---
 
 # Project State
@@ -24,7 +24,7 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 ## Current Position
 
 Phase: 03 (model-training-and-evaluation) — EXECUTING
-Plan: 2 of 5 — COMPLETE (param-count fix); Plan 2 and 3 previously complete
+Plan: 3 of 5 — COMPLETE (param-count fix); Plan 2 and 3 previously complete
 
 ## Performance Metrics
 
@@ -53,6 +53,7 @@ Plan: 2 of 5 — COMPLETE (param-count fix); Plan 2 and 3 previously complete
 | Phase 01 P02 | 3min | 1 tasks | 5 files |
 | Phase 01 P01 | 10min | 2 tasks | 6 files |
 | Phase 03 P04 | 1 | 2 tasks | 3 files |
+| Phase 03 P05 | 6 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -88,6 +89,8 @@ Recent decisions affecting current work:
 - [Phase 03 P01 fix]: SimpViT actual param count is 877,571 — planning doc's ~3.4M was a planning error (hidden_size=64 not 256); dim_feedforward defaults to 2048 in nn.TransformerEncoderLayer; test range corrected to [800K, 950K]
 - [Phase 03]: Matplotlib lazy import in evaluate.py plotting functions for headless environment compatibility
 - [Phase 03]: OUTPUT_NAMES constant ['log10_Ctr', 'inhibition_period', 'retardation_factor'] for consistent labeling across evaluation outputs
+- [Phase 03]: Bootstrap uses training-time head fine-tuning (not inference-time input perturbation)
+- [Phase 03]: F-distribution JCI with p=3, exact port from ViT-RR deploy.py
 
 ### Pending Todos
 
@@ -107,6 +110,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-27T09:37:32.757Z
-Stopped at: Completed 03-04-PLAN.md — evaluation module with figure generation and notebook
+Last session: 2026-03-27T09:47:54.026Z
+Stopped at: Completed 03-05-PLAN.md — bootstrap UQ with F-distribution JCI and calibration
 Resume file: None

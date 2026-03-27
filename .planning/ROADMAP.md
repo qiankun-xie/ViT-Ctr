@@ -65,7 +65,7 @@ Plans:
 - [x] 03-02-PLAN.md — Data pipeline: stratified split, CombinedHDF5Dataset, per-class evaluation stub
 - [x] 03-03-PLAN.md — Training loop: weighted MSE, EarlyStopper, Colab training notebook
 - [x] 03-04-PLAN.md — Evaluation: parity plots, per-class metrics, residual analysis
-- [ ] 03-05-PLAN.md — Bootstrap UQ: freeze backbone, 200 heads, F-dist JCI, post-hoc calibration
+- [x] 03-05-PLAN.md — Bootstrap UQ: freeze backbone, 200 heads, F-dist JCI, post-hoc calibration
 
 ### Phase 4: Literature Validation and Mayo Baseline
 **Goal**: The trained model is validated against 10+ published Ctr values spanning multiple RAFT agent classes and measurement methods, with fold-errors reported and a Mayo equation baseline comparison included

@@ -40,8 +40,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### 不确定性量化
 
-- [ ] **UQ-01**: Bootstrap采样（200次迭代）+ F分布联合置信区间估计
-- [ ] **UQ-02**: 在验证集上进行事后校准，确保95% CI覆盖率达标
+- [x] **UQ-01**: Bootstrap采样（200次迭代）+ F分布联合置信区间估计
+- [x] **UQ-02**: 在验证集上进行事后校准，确保95% CI覆盖率达标
 
 ### Web应用
 
@@ -105,8 +105,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | VAL-01 | Phase 4 | Pending |
 | VAL-02 | Phase 4 | Pending |
 | VAL-03 | Phase 4 | Pending |
-| UQ-01 | Phase 3 | Pending |
-| UQ-02 | Phase 3 | Pending |
+| UQ-01 | Phase 3 | Complete |
+| UQ-02 | Phase 3 | Complete |
 | APP-01 | Phase 5 | Pending |
 | APP-02 | Phase 5 | Pending |
 | APP-03 | Phase 5 | Pending |
