@@ -45,7 +45,10 @@ Plans:
   2. Generated samples are stored in chunked HDF5 files that can be loaded incrementally without exceeding 16 GB RAM
   3. Ctr values are log-uniformly distributed across the specified range, with no cluster gaps visible in the histogram
   4. Dataset files are accessible from Google Colab for Phase 3 training
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [x] 02-01-PLAN.md — LHS parameter sampling and parallel dataset generation
+- [ ] 02-02-PLAN.md — Dataset validation and Google Drive upload
 
 ### Phase 3: Model Training and Evaluation
 **Goal**: A trained SimpViT model with a 3-parameter output head achieves strong test-set performance on all three parameters, with calibrated bootstrap confidence intervals, and is ready for deployment
@@ -99,8 +102,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. ODE Foundation and ctFP Encoder | 0/3 | Planning complete | - |
-| 2. Large-Scale Dataset Generation | 0/? | Not started | - |
+| 1. ODE Foundation and ctFP Encoder | 3/3 | Complete | 2026-03-26 |
+| 2. Large-Scale Dataset Generation | 1/2 | Executing | - |
 | 3. Model Training and Evaluation | 0/? | Not started | - |
 | 4. Literature Validation and Mayo Baseline | 0/? | Not started | - |
 | 5. Streamlit Web Application | 0/? | Not started | - |
@@ -108,4 +111,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-03-25 after Phase 1 planning — 3 plans created*
+*Last updated: 2026-03-27 after Plan 02-01 complete — LHS sampling + parallel generation + HDF5 storage*

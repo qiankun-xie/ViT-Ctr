@@ -2,16 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 2 context gathered
-last_updated: "2026-03-25T08:24:56.555Z"
-last_activity: 2026-03-24 — Roadmap created; 27/27 requirements mapped to 6 phases
+status: Executing Phase 02
+stopped_at: Plan 02-01 complete — LHS sampler, noise injection, parallel generation, HDF5 storage implemented and verified
+last_updated: "2026-03-27T07:00:00.000Z"
 progress:
   total_phases: 6
-  completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  completed_phases: 1
+  total_plans: 6
+  completed_plans: 4
 ---
 
 # Project State
@@ -21,37 +19,36 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** 一次输入实验数据，同时提取Ctr、诱导期和减速因子三个参数——传统方法需要三组独立实验才能分别获得。
-**Current focus:** Phase 1 — ODE Foundation and ctFP Encoder
+**Current focus:** Phase 02 — large-scale-dataset-generation
 
 ## Current Position
 
-Phase: 1 of 6 (ODE Foundation and ctFP Encoder)
-Plan: 0 of ? in current phase
-Status: Ready to plan
-Last activity: 2026-03-24 — Roadmap created; 27/27 requirements mapped to 6 phases
-
-Progress: [░░░░░░░░░░] 0%
+Phase: 02 (large-scale-dataset-generation) — EXECUTING
+Plan: 02-01 COMPLETE, 02-02 pending
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 0
-- Average duration: —
-- Total execution time: 0 hours
+- Total plans completed: 4
+- Average duration: ~10min
+- Total execution time: ~43min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01 | 3 | ~28min | ~9min |
+| 02 | 1 | ~15min | ~15min |
 
 **Recent Trend:**
 
-- Last 5 plans: —
-- Trend: —
-
-*Updated after each plan completion*
+| Plan | Duration | Tasks | Files |
+|------|----------|-------|-------|
+| Phase 02 P01 | ~15min | 2 tasks | 1 file |
+| Phase 01 P03 | ~15min | 2 tasks | 3 files |
+| Phase 01 P02 | 3min | 1 tasks | 5 files |
+| Phase 01 P01 | 10min | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -63,6 +60,14 @@ Recent decisions affecting current work:
 - Init: ODE validation must precede all data generation — corruption at ODE level requires full dataset regeneration (research finding)
 - Init: ctFP encoder extracted as shared module from day one — encoding divergence between training and inference silently invalidates predictions
 - Init: Large-scale training targets Google Colab T4; local MX350 (2 GB) is insufficient for 1M sample training run
+- [Phase 01]: Dispersity clipped at 4.0 in ctFP encoder to prevent outlier domination
+- [Phase 01]: Dormant chain moments (nu) tracked separately from dead chains (lam) -- RAFT exchange is moment swap, not chain death
+- [Phase 01]: State vector: 14 vars (single-eq) / 16 vars (pre-eq) with mu/nu/lam moment populations
+- [Phase 01]: joblib prefer=threads for Windows diagnostic parallelism
+- [Phase 02]: LHS采样7维连续参数空间，对数均匀采样覆盖多数量级范围
+- [Phase 02]: 噪声sigma=0.03（3%相对误差），在D-05规定的0.02-0.05范围内
+- [Phase 02]: HDF5存储(n,64,64,2)格式，chunk=1000，按RAFT类型分文件
+- [Phase 02]: joblib prefer='processes' 用于大规模并行生成（避免GIL瓶颈）
 
 ### Pending Todos
 
@@ -70,12 +75,12 @@ None yet.
 
 ### Blockers/Concerns
 
-- Phase 1: RAFT two-stage pre-equilibrium ODE moment equations must be verified against Macromolecules 2022 paper before implementation — exact ODE system not yet confirmed
-- Phase 1: Retardation factor output normalization strategy not yet decided (dimensionless rate ratio vs. fractional value; affects Phase 3 target scaling)
+- Phase 1 (resolved): RAFT two-stage pre-equilibrium ODE moment equations verified through literature validation
+- Phase 1 (noted): Retardation factor ~1.0 for all tested systems — normalization strategy still open for Phase 3
 - Phase 4: Preliminary literature survey for 10+ Ctr validation points should begin early to confirm sufficient published data exists before training completes
 
 ## Session Continuity
 
-Last session: 2026-03-25T08:24:56.551Z
-Stopped at: Phase 2 context gathered
-Resume file: .planning/phases/02-large-scale-dataset-generation/02-CONTEXT.md
+Last session: 2026-03-27
+Stopped at: Plan 02-01 complete — dataset_generator.py with LHS sampling, noise injection, parallel generation, HDF5 storage
+Resume file: None
