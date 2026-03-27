@@ -30,13 +30,13 @@ from tqdm import tqdm
 # 防止MKL/torch冲突（Windows环境）
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
-from src.raft_ode import (
+from raft_ode import (
     simulate_raft,
     compute_retardation_factor,
     compute_inhibition_period,
     _run_ode_for_rate,
 )
-from src.ctfp_encoder import transform
+from ctfp_encoder import transform
 
 
 # ============================================================
