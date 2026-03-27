@@ -43,6 +43,7 @@
 | File | Change |
 |------|--------|
 | `src/dataset_generator.py` | 新建 — 完整的大规模数据集生成管线 |
+| `tests/test_dataset_generator.py` | 新建 — 23单元测试 + 3集成测试 |
 
 ## Duration
 
