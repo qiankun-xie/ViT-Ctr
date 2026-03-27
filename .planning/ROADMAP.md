@@ -61,7 +61,7 @@ Plans:
   4. Bootstrap 95% CI coverage on a held-out calibration set reaches the nominal level (or a scalar correction is documented and applied)
 **Plans**: 5 plans
 Plans:
-- [ ] 03-01-PLAN.md — SimpViT model (num_outputs=3) + metrics and visualization utilities
+- [x] 03-01-PLAN.md — SimpViT model (num_outputs=3) + metrics and visualization utilities
 - [x] 03-02-PLAN.md — Data pipeline: stratified split, CombinedHDF5Dataset, per-class evaluation stub
 - [x] 03-03-PLAN.md — Training loop: weighted MSE, EarlyStopper, Colab training notebook
 - [ ] 03-04-PLAN.md — Evaluation: parity plots, per-class metrics, residual analysis
@@ -110,11 +110,11 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. ODE Foundation and ctFP Encoder | 3/3 | Complete | 2026-03-26 |
 | 2. Large-Scale Dataset Generation | 2/2 | Complete | 2026-03-27 |
-| 3. Model Training and Evaluation | 2/5 | In Progress | - |
+| 3. Model Training and Evaluation | 3/5 | In Progress | - |
 | 4. Literature Validation and Mayo Baseline | 0/? | Not started | - |
 | 5. Streamlit Web Application | 0/? | Not started | - |
 | 6. Paper and Supporting Information | 0/? | Not started | - |
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-03-27 after Phase 03 Plan 03 — training loop (train.py + EarlyStopper + Colab notebook) complete*
+*Last updated: 2026-03-27 after Phase 03 Plan 01 fix — param count corrected (877K; planning doc's 3.4M was error); plans 01+02+03 now complete*
