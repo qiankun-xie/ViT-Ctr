@@ -2,3 +2,20 @@ __pycache__/
 *.pyc
 *.pyo
 .pytest_cache/
+
+# 大文件数据集（不上传到GitHub）
+data/*.h5
+data/*.npz
+data/*.tar.gz
+
+# 训练输出
+checkpoints/
+*.pth
+*.pt
+
+# Claude工作目录
+.claude/
+
+# 日志和临时文件
+*.log
+.DS_Store

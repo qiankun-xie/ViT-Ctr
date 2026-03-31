@@ -222,6 +222,45 @@ class TestInhibitionPeriod:
         )
 
 
+class TestDiagnosticDataset:
+    """诊断数据集生成验证"""
+
+    @pytest.mark.slow
+    def test_diagnostic_dataset(self):
+        """generate_diagnostic_dataset(n_per_type=250)失败率 < 2%（< 20/1000失败）"""
+        from src.diagnostic import generate_diagnostic_dataset
+
+        ds = generate_diagnostic_dataset(n_per_type=250)
+        n_total = len(ds['results']) + len(ds['failures'])
+        n_fail = len(ds['failures'])
+        failure_rate = n_fail / n_total if n_total > 0 else 0.0
+
+        assert n_total == 1000, f"总样本数应为1000，实际: {n_total}"
+        assert failure_rate < 0.02, (
+            f"失败率 {failure_rate:.2%} ({n_fail}/{n_total}) 应 < 2%"
+        )
+
+    def test_diagnostic_labels_valid(self):
+        """诊断数据集标签在合理范围内"""
+        from src.diagnostic import generate_diagnostic_dataset
+
+        ds = generate_diagnostic_dataset(n_per_type=5)
+
+        for i, lbl in enumerate(ds['labels']):
+            # log10_ctr in [-2, 4]
+            assert -2.5 <= lbl['log10_ctr'] <= 4.5, (
+                f"样本{i}: log10_ctr={lbl['log10_ctr']:.3f} 不在 [-2, 4] 范围"
+            )
+            # inhibition_period in [0, 1]
+            assert 0 <= lbl['inhibition_period'] <= 1.0, (
+                f"样本{i}: inhibition_period={lbl['inhibition_period']:.3f} 不在 [0, 1]"
+            )
+            # retardation_factor in (0, 1]
+            assert 0 < lbl['retardation_factor'] <= 1.0, (
+                f"样本{i}: retardation_factor={lbl['retardation_factor']:.3f} 不在 (0, 1]"
+            )
+
+
 class TestMnNormalization:
     """Mn归一化验证"""
 

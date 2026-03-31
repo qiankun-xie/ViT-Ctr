@@ -223,14 +223,15 @@ def raft_ode_single_eq(t, y, kd, f, ki, kp, kt, kadd, kfrag):
                - loss_cta_mu0           # 加成到初始CTA
                + ex_mu0)               # RAFT交换
 
-    dmu1_dt = (kp * M * mu0            # 增长
-               + R_init + R_reinit_cta  # 引发(length=1)
+    # 注意: 引发和CTA重引发产生的自由基从长度0开始（未消耗单体），
+    # 由增长项 kp*M*mu0 负责添加第一个单体单位。
+    # 这保证了质量守恒: total_1 = consumed_monomer。
+    dmu1_dt = (kp * M * mu0            # 增长（含首次加单体）
                - 2.0 * kt * mu1 * mu0  # 终止
                - loss_cta_mu1           # 加成到初始CTA
                + ex_mu1)               # RAFT交换
 
     dmu2_dt = (kp * M * (2.0 * mu1 + mu0)  # 增长
-               + R_init + R_reinit_cta       # 引发(length=1, 1^2=1)
                - 2.0 * kt * mu2 * mu0       # 终止
                - loss_cta_mu2               # 加成到初始CTA
                + ex_mu2)                    # RAFT交换
@@ -348,13 +349,11 @@ def raft_ode_preequilibrium(t, y, kd, f, ki, kp, kt, kadd, kfrag, kadd0, kfrag0)
                + ex_mu0)
 
     dmu1_dt = (kp * M * mu0
-               + R_init + R_reinit
                - 2.0 * kt * mu1 * mu0
                - loss_pre_mu1
                + ex_mu1)
 
     dmu2_dt = (kp * M * (2.0 * mu1 + mu0)
-               + R_init + R_reinit
                - 2.0 * kt * mu2 * mu0
                - loss_pre_mu2
                + ex_mu2)
