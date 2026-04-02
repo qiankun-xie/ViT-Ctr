@@ -68,15 +68,18 @@ Plans:
 - [x] 03-05-PLAN.md — Bootstrap UQ: freeze backbone, 200 heads, F-dist JCI, post-hoc calibration
 
 ### Phase 4: Literature Validation and Mayo Baseline
-**Goal**: The trained model is validated against 10+ published Ctr values spanning multiple RAFT agent classes and measurement methods, with fold-errors reported and a Mayo equation baseline comparison included
+**Goal**: The trained model is validated against 14 published Ctr values spanning 4 RAFT agent classes and 3 measurement methods, with fold-errors reported and a Mayo equation ODE-fitting baseline comparison included
 **Depends on**: Phase 3
 **Requirements**: VAL-01, VAL-02, VAL-03, EVL-04
 **Success Criteria** (what must be TRUE):
-  1. A curated dataset of 10+ published Ctr values exists, each annotated with RAFT agent class, measurement method (Mayo / CLD / dispersity), temperature, solvent, and monomer
+  1. A curated dataset of 14 published Ctr values exists, each annotated with RAFT agent class, measurement method (Mayo / CLD / dispersity), temperature, solvent, and monomer
   2. Model predictions on the literature set are compared to published values with fold-error computed for each point, and results are broken down by measurement method
   3. The Mayo equation baseline is implemented and evaluated on the same literature set, enabling a direct accuracy comparison between ML and traditional methods
   4. Paper-ready validation figures (predicted vs. published Ctr, per-class breakdown) are produced
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 04-01-PLAN.md — Literature CSV dataset + Mayo fitter + fold-error module
+- [ ] 04-02-PLAN.md — Validation notebook, pipeline execution, and human verification
 
 ### Phase 5: Streamlit Web Application
 **Goal**: A deployed Streamlit app lets researchers input experimental RAFT kinetic data and receive simultaneous predictions for Ctr, inhibition period, and retardation factor with confidence intervals
@@ -111,10 +114,10 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. ODE Foundation and ctFP Encoder | 3/3 | Complete | 2026-03-26 |
 | 2. Large-Scale Dataset Generation | 2/2 | Complete | 2026-03-27 |
 | 3. Model Training and Evaluation | 3/5 | In Progress | - |
-| 4. Literature Validation and Mayo Baseline | 0/? | Not started | - |
+| 4. Literature Validation and Mayo Baseline | 0/2 | Not started | - |
 | 5. Streamlit Web Application | 0/? | Not started | - |
 | 6. Paper and Supporting Information | 0/? | Not started | - |
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-03-27 after Phase 03 Plan 01 fix — param count corrected (877K; planning doc's 3.4M was error); plans 01+02+03 now complete*
+*Last updated: 2026-04-02 after Phase 04 planning — 2 plans created (literature dataset + Mayo fitter, validation pipeline + human verify)*
