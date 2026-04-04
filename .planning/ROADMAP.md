@@ -93,7 +93,7 @@ Plans:
   5. Model weights load once per session via st.cache_resource with no repeated loading on reruns
 **Plans**: 2 plans
 Plans:
-- [ ] 05-01-PLAN.md — App utility module (validation, normalization bridge, template, result formatting) + tests
+- [x] 05-01-PLAN.md — App utility module (validation, normalization bridge, template, result formatting) + tests
 - [ ] 05-02-PLAN.md — Streamlit app (app.py) wiring UI to inference pipeline + visual verification
 
 ### Phase 6: Paper and Supporting Information

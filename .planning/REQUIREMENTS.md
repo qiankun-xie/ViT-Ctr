@@ -45,10 +45,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Web应用
 
-- [ ] **APP-01**: Streamlit Web应用支持手动输入实验数据（[CTA]/[M], conversion, Mn, Đ）
-- [ ] **APP-02**: 支持Excel/CSV文件上传，提供可下载的Excel模板
+- [x] **APP-01**: Streamlit Web应用支持手动输入实验数据（[CTA]/[M], conversion, Mn, Đ）
+- [x] **APP-02**: 支持Excel/CSV文件上传，提供可下载的Excel模板
 - [ ] **APP-03**: 同时显示三个预测参数（Ctr、诱导期、减速因子）及其95%置信区间
-- [ ] **APP-04**: 输入数据验证：conversion∈(0,1), Mn>0, Đ≥1, 至少3个数据点
+- [x] **APP-04**: 输入数据验证：conversion∈(0,1), Mn>0, Đ≥1, 至少3个数据点
 - [ ] **APP-05**: ctFP指纹双通道热力图可视化，展示模型输入的数据结构
 - [ ] **APP-06**: 模型加载使用st.cache_resource缓存，避免重复加载
 
@@ -107,10 +107,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | VAL-03 | Phase 4 | Pending |
 | UQ-01 | Phase 3 | Complete |
 | UQ-02 | Phase 3 | Complete |
-| APP-01 | Phase 5 | Pending |
-| APP-02 | Phase 5 | Pending |
+| APP-01 | Phase 5 | Complete |
+| APP-02 | Phase 5 | Complete |
 | APP-03 | Phase 5 | Pending |
-| APP-04 | Phase 5 | Pending |
+| APP-04 | Phase 5 | Complete |
 | APP-05 | Phase 5 | Pending |
 | APP-06 | Phase 5 | Pending |
 | PAP-01 | Phase 6 | Pending |
