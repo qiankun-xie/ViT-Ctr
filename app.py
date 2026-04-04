@@ -9,6 +9,9 @@ Usage: streamlit run app.py
 import json
 import os
 
+# Suppress OpenMP duplicate-library warning (common on Windows with conda PyTorch)
+os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -42,7 +45,9 @@ _CAL_PATH = os.path.join(_CKPT_DIR, "calibration.json")
 def load_model():
     """Load SimpViT + optional bootstrap heads + calibration factors."""
     model = SimpViT(num_outputs=3)
-    state = torch.load(_MODEL_PATH, map_location="cpu", weights_only=True)
+    # weights_only=False: checkpoint is a full training dict {epoch, model_state_dict, ...}
+    ckpt = torch.load(_MODEL_PATH, map_location="cpu", weights_only=False)
+    state = ckpt.get("model_state_dict", ckpt)  # handles both formats
     model.load_state_dict(state)
     model.eval()
 
