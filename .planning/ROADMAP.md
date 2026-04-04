@@ -14,8 +14,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: ODE Foundation and ctFP Encoder** - Validate RAFT kinetic ODE and freeze the shared fingerprint encoder
 - [x] **Phase 2: Large-Scale Dataset Generation** - Generate ~1M synthetic ctFP samples in chunked HDF5 format
-- [ ] **Phase 3: Model Training and Evaluation** - Train SimpViT with 3-parameter output; evaluate with bootstrap UQ
-- [ ] **Phase 4: Literature Validation and Mayo Baseline** - Curate published Ctr values; compare model vs. Mayo equation
+- [x] **Phase 3: Model Training and Evaluation** - Train SimpViT with 3-parameter output; evaluate with bootstrap UQ
+- [x] **Phase 4: Literature Validation and Mayo Baseline** - Curate published Ctr values; compare model vs. Mayo equation
 - [ ] **Phase 5: Streamlit Web Application** - Deploy interactive app with manual/Excel input, CI display, ctFP preview
 - [ ] **Phase 6: Paper and Supporting Information** - Write manuscript and SI using finalized figures and validated results
 
@@ -78,8 +78,8 @@ Plans:
   4. Paper-ready validation figures (predicted vs. published Ctr, per-class breakdown) are produced
 **Plans**: 2 plans
 Plans:
-- [ ] 04-01-PLAN.md — Literature CSV dataset + Mayo fitter + fold-error module
-- [ ] 04-02-PLAN.md — Validation notebook, pipeline execution, and human verification
+- [x] 04-01-PLAN.md — Literature CSV dataset + Mayo fitter + fold-error module
+- [x] 04-02-PLAN.md — Validation notebook, pipeline execution, and human verification
 
 ### Phase 5: Streamlit Web Application
 **Goal**: A deployed Streamlit app lets researchers input experimental RAFT kinetic data and receive simultaneous predictions for Ctr, inhibition period, and retardation factor with confidence intervals
@@ -115,11 +115,11 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 |-------|----------------|--------|-----------|
 | 1. ODE Foundation and ctFP Encoder | 3/3 | Complete | 2026-03-26 |
 | 2. Large-Scale Dataset Generation | 2/2 | Complete | 2026-03-27 |
-| 3. Model Training and Evaluation | 3/5 | In Progress | - |
-| 4. Literature Validation and Mayo Baseline | 0/2 | Not started | - |
-| 5. Streamlit Web Application | 0/2 | Not started | - |
+| 3. Model Training and Evaluation | 5/5 | Complete | 2026-04-03 |
+| 4. Literature Validation and Mayo Baseline | 2/2 | Complete | 2026-04-04 |
+| 5. Streamlit Web Application | 1/2 | In Progress | - |
 | 6. Paper and Supporting Information | 0/? | Not started | - |
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-04-04 after Phase 05 planning — 2 plans created (app utilities + tests, Streamlit app + visual verify)*
+*Last updated: 2026-04-04 — Phase 3 and 4 marked complete, Phase 5 in progress (1/2 plans)*
