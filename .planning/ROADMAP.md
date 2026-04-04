@@ -56,7 +56,7 @@ Plans:
 **Requirements**: TRN-01, TRN-02, TRN-03, EVL-01, EVL-02, EVL-03, UQ-01, UQ-02
 **Success Criteria** (what must be TRUE):
   1. SimpViT converges on all three outputs (log10(Ctr), inhibition period, retardation factor) with loss curves showing no divergence or plateau artifacts
-  2. Test-set parity plots for all three parameters show tight clustering around the identity line, with R² reported per output
+  2. Test-set parity plots for all three parameters show tight clustering around the identity line, with R2 reported per output
   3. Per-RAFT-agent-class evaluation shows acceptable performance across all four RAFT classes
   4. Bootstrap 95% CI coverage on a held-out calibration set reaches the nominal level (or a scalar correction is documented and applied)
 **Plans**: 5 plans
@@ -91,8 +91,10 @@ Plans:
   3. Invalid input (conversion outside (0,1), Mn <= 0, D < 1, fewer than 3 data points) is caught before inference and an explicit error message is shown
   4. The ctFP fingerprint is displayed as a dual-channel heatmap so the user can visually verify the encoding before accepting results
   5. Model weights load once per session via st.cache_resource with no repeated loading on reruns
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 2 plans
+Plans:
+- [ ] 05-01-PLAN.md — App utility module (validation, normalization bridge, template, result formatting) + tests
+- [ ] 05-02-PLAN.md — Streamlit app (app.py) wiring UI to inference pipeline + visual verification
 
 ### Phase 6: Paper and Supporting Information
 **Goal**: A complete draft manuscript and Supporting Information exist, with all figures generated from finalized model results, ODE derivations consistent with code, and Route A framed as future work
@@ -100,14 +102,14 @@ Plans:
 **Requirements**: PAP-01, PAP-02, PAP-03
 **Success Criteria** (what must be TRUE):
   1. The paper's Introduction, Methods, Results, Discussion, and Conclusion sections are drafted in English, with the three-parameter simultaneous prediction claim scoped to the RAFT agent classes where retardation is reliably identifiable
-  2. The Supporting Information contains the LaTeX ODE derivation, and the equations in the SI match the implemented ODE system in `raft_ode.py`
-  3. Route A (molecular structure → Ctr via SMILES) is included as a Discussion/Conclusion future-directions section, not as a standalone results claim
+  2. The Supporting Information contains the LaTeX ODE derivation, and the equations in the SI match the implemented ODE system in raft_ode.py
+  3. Route A (molecular structure -> Ctr via SMILES) is included as a Discussion/Conclusion future-directions section, not as a standalone results claim
 **Plans**: TBD
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -115,9 +117,9 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Large-Scale Dataset Generation | 2/2 | Complete | 2026-03-27 |
 | 3. Model Training and Evaluation | 3/5 | In Progress | - |
 | 4. Literature Validation and Mayo Baseline | 0/2 | Not started | - |
-| 5. Streamlit Web Application | 0/? | Not started | - |
+| 5. Streamlit Web Application | 0/2 | Not started | - |
 | 6. Paper and Supporting Information | 0/? | Not started | - |
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-04-02 after Phase 04 planning — 2 plans created (literature dataset + Mayo fitter, validation pipeline + human verify)*
+*Last updated: 2026-04-04 after Phase 05 planning — 2 plans created (app utilities + tests, Streamlit app + visual verify)*
