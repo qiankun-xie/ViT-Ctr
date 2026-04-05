@@ -36,34 +36,48 @@ tests/test_bootstrap.py       # 测试本地接口
 
 ## Component Design
 
-### 1. colab/autodl_bootstrap.py — 自包含脚本（~300行）
+### 1. colab/autodl_bootstrap.py — 自包含脚本（~450行）
 
 零外部import（仅依赖torch/numpy/scipy/h5py）。包含运行bootstrap所需的一切。
 
 **内部结构：**
 
 ```python
-# ── 模型定义（~30行，从src/model.py复制） ──
-class SimpViT(nn.Module): ...
+# ── 常量与工具（~15行） ──
+N_BOOTSTRAP = 200; N_EPOCHS = 5; SEED = 42; P_OUTPUTS = 3; ...
+
+# ── 模型定义（~30行，从src/model.py逐字复制） ──
+class SimpViT(nn.Module): ...  # 含num_outputs参数
+
+# ── 损失函数（~5行，从src/train.py复制） ──
+def weighted_mse_loss(pred, target, weights): ...
+
+# ── 数据加载（~80行） ──
+def build_stratified_indices(h5_paths, val_frac, test_frac, seed): ...
+    # 从src/utils/split.py内联，按RAFT类型分层采样
+def preload_to_ram(h5_paths, indices): ...
+    # 按文件批量读取（非逐样本），返回(fps, lbls) tensors
 
 # ── Bootstrap核心（~120行） ──
 def freeze_backbone(model): ...
 def run_bootstrap(model, train_fps, train_lbls, *, save_dir, resume=False, ...): ...
-    # 每完成一个head立即追加保存到bootstrap_heads.pth
+    # 内置weighted_mse_loss，每完成一个head立即追加保存
     # 实时更新bootstrap_progress.json
 
-# ── 校准（~60行） ──
+# ── 校准（~70行） ──
 def collect_ensemble_predictions(model, fps, lbls, heads, ...): ...
 def compute_jci(cov_matrix, n, p=3): ...
+def compute_half_widths(all_preds): ...
 def calibrate_coverage(y_true, y_pred_mean, half_widths, target=0.95): ...
 
-# ── 数据加载（~40行） ──
-def load_data(h5_dir, base_model_path): ...
-    # 读HDF5 → 分层split → preload到RAM → 返回(train/val/test)元组
-
-# ── 打包（~20行） ──
+# ── 验证与打包（~50行） ──
+def run_verification(model, test_fps, test_lbls, heads, cal_factors): ...
+    # 打印5个样本的预测结果作为端到端验证
 def package_results(ckpt_dir): ...
     # → bootstrap_results.tar.gz
+
+# ── 进度跟踪（~25行） ──
+class ProgressTracker: ...  # 计算ETA、格式化时间
 
 # ── CLI入口（~30行） ──
 def main():
@@ -90,10 +104,12 @@ def compute_jci(cov_matrix, n, p=3):
     """F-distribution 95% JCI"""
 
 def load_calibration(path):
-    """读取calibration.json，返回cal_factors dict"""
+    """读取calibration.json，返回cal_factors dict（新增函数）"""
 ```
 
-`compute_jci` 在两个文件中重复（~10行），自包含方案的可接受代价。
+`compute_jci` 在两个文件中重复（~10行），自包含方案的可接受代价。两处均添加注释指向另一份副本。
+
+**从src/bootstrap.py移除的函数：** `freeze_backbone`, `run_bootstrap`, `collect_ensemble_predictions`, `compute_half_widths`, `compute_coverage`, `calibrate_coverage`, `run_calibration` — 这些全部移入autodl_bootstrap.py。
 
 **下游影响：**
 - `src/literature_validation.py` — 继续 `from bootstrap import predict_with_uncertainty`，无变化
@@ -108,7 +124,7 @@ autodl-sync.bat
 ```
 
 - SCP上传 `colab/autodl_bootstrap.py` → 远程 `/root/autodl-tmp/bootstrap/autodl_bootstrap.py`
-- SCP上传 `checkpoints/best_model.pth` → 远程 `/root/autodl-tmp/checkpoints/best_model.pth`（如果本地有）
+- SCP上传 `checkpoints/best_model.pth` → 远程 `/root/autodl-tmp/checkpoints/best_model.pth`（如果本地有；通常训练阶段已在AutoDL上产生，此步为可选同步）
 - SSH检查远程HDF5数据是否存在，打印确认信息
 - 失败时明确报错
 
@@ -130,7 +146,7 @@ autodl-download.bat
 ```
 
 - SCP下载 `bootstrap_results.tar.gz` → 本地 `checkpoints/`
-- 自动解压（得到 `bootstrap_heads.pth`, `calibration.json`, `bootstrap_summary.json`）
+- 自动解压（Windows 10 `tar -xzf`，得到 `bootstrap_heads.pth`, `calibration.json`, `bootstrap_summary.json`）
 - 打印产物清单和文件大小
 - 删除本地tar.gz
 
@@ -160,5 +176,6 @@ autodl-status.bat
 2. 精简 `src/bootstrap.py` 为本地推理接口
 3. 重写 `tests/test_bootstrap.py`
 4. 重写3个bat脚本（sync/run/download）
-5. 删除2个notebook
-6. 更新 `src/literature_validation.py` 的import（如需要）
+5. 验证新工作流可端到端运行
+6. 删除2个notebook（验证通过后）
+7. 更新 `src/literature_validation.py` 的import（如需要）
