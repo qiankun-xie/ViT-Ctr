@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Large-Scale Dataset Generation** - Generate ~1M synthetic ctFP samples in chunked HDF5 format
 - [x] **Phase 3: Model Training and Evaluation** - Train SimpViT with 3-parameter output; evaluate with bootstrap UQ
 - [x] **Phase 4: Literature Validation and Mayo Baseline** - Curate published Ctr values; compare model vs. Mayo equation
-- [ ] **Phase 5: Streamlit Web Application** - Deploy interactive app with manual/Excel input, CI display, ctFP preview
+- [x] **Phase 5: Streamlit Web Application** - Deploy interactive app with manual/Excel input, CI display, ctFP preview
 - [ ] **Phase 6: Paper and Supporting Information** - Write manuscript and SI using finalized figures and validated results
 
 ## Phase Details
@@ -94,7 +94,7 @@ Plans:
 **Plans**: 2 plans
 Plans:
 - [x] 05-01-PLAN.md — App utility module (validation, normalization bridge, template, result formatting) + tests
-- [ ] 05-02-PLAN.md — Streamlit app (app.py) wiring UI to inference pipeline + visual verification
+- [x] 05-02-PLAN.md — Streamlit app (app.py) wiring UI to inference pipeline + visual verification
 
 ### Phase 6: Paper and Supporting Information
 **Goal**: A complete draft manuscript and Supporting Information exist, with all figures generated from finalized model results, ODE derivations consistent with code, and Route A framed as future work
@@ -104,7 +104,12 @@ Plans:
   1. The paper's Introduction, Methods, Results, Discussion, and Conclusion sections are drafted in English, with the three-parameter simultaneous prediction claim scoped to the RAFT agent classes where retardation is reliably identifiable
   2. The Supporting Information contains the LaTeX ODE derivation, and the equations in the SI match the implemented ODE system in raft_ode.py
   3. Route A (molecular structure -> Ctr via SMILES) is included as a Discussion/Conclusion future-directions section, not as a standalone results claim
-**Plans**: TBD
+**Plans**: 4 plans
+Plans:
+- [ ] 06-01-PLAN.md — Figure generation (concept diagram, ctFP example, composite parity, TOC graphic)
+- [ ] 06-02-PLAN.md — LaTeX manuscript (IMRAD + Route A as future work)
+- [ ] 06-03-PLAN.md — Supporting Information (ODE derivation matching code + evaluation details)
+- [ ] 06-04-PLAN.md — Word versions (English + Chinese .docx)
 
 ## Progress
 
@@ -117,9 +122,9 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 2. Large-Scale Dataset Generation | 2/2 | Complete | 2026-03-27 |
 | 3. Model Training and Evaluation | 5/5 | Complete | 2026-04-03 |
 | 4. Literature Validation and Mayo Baseline | 2/2 | Complete | 2026-04-04 |
-| 5. Streamlit Web Application | 1/2 | In Progress | - |
-| 6. Paper and Supporting Information | 0/? | Not started | - |
+| 5. Streamlit Web Application | 2/2 | Complete | 2026-04-06 |
+| 6. Paper and Supporting Information | 0/4 | In progress | - |
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-04-04 — Phase 3 and 4 marked complete, Phase 5 in progress (1/2 plans)*
+*Last updated: 2026-04-06 — Phase 6 planned (4 plans, 3 waves)*
