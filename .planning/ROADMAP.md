@@ -113,8 +113,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. Model Training and Evaluation | 3/5 | In Progress | - |
 | 4. Literature Validation and Mayo Baseline | 0/? | Not started | - |
 | 5. Streamlit Web Application | 0/? | Not started | - |
-| 6. Paper and Supporting Information | 0/? | Not started | - |
+| 6. Paper and Supporting Information | 0/4 | In Progress | - |
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-03-27 after Phase 03 Plan 01 fix — param count corrected (877K; planning doc's 3.4M was error); plans 01+02+03 now complete*
+*Last updated: 2026-04-08 — Phase 06 Plan 01 Task 1 complete (4 publication figures generated); Task 2 pending human visual review*

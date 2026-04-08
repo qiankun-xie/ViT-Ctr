@@ -2,14 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to plan
-stopped_at: Phase 4 context gathered
-last_updated: "2026-03-27T10:22:48.344Z"
+status: Executing Phase 06
+stopped_at: Phase 06 Plan 01 Task 1 complete, Task 2 pending human review
+last_updated: "2026-04-08T09:00:00.000Z"
+last_activity: 2026-04-08
 progress:
   total_phases: 6
-  completed_phases: 3
-  total_plans: 10
-  completed_plans: 10
+  completed_phases: 5
+  total_plans: 18
+  completed_plans: 14
 ---
 
 # Project State
@@ -19,12 +20,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-24)
 
 **Core value:** 一次输入实验数据，同时提取Ctr、诱导期和减速因子三个参数——传统方法需要三组独立实验才能分别获得。
-**Current focus:** Phase 03 — model-training-and-evaluation
+**Current focus:** Phase 06 — paper-and-supporting-information
 
 ## Current Position
 
-Phase: 4
-Plan: Not started
+Phase: 06 (paper-and-supporting-information) — EXECUTING
+Plan: 01 of 4 — Task 1 complete, Task 2 (human visual review) pending
 
 ## Performance Metrics
 
@@ -91,6 +92,10 @@ Recent decisions affecting current work:
 - [Phase 03]: OUTPUT_NAMES constant ['log10_Ctr', 'inhibition_period', 'retardation_factor'] for consistent labeling across evaluation outputs
 - [Phase 03]: Bootstrap uses training-time head fine-tuning (not inference-time input perturbation)
 - [Phase 03]: F-distribution JCI with p=3, exact port from ViT-RR deploy.py
+- [Phase 04 revalidation]: Literature dataset expanded from 14 to 77 points (Chong 2003, Moad 2009, Moad 2012)
+- [Phase 04 revalidation]: Inhibition/retardation validated qualitatively (no quantitative literature values exist); dithioester expected to show retardation, others ≈ ideal
+- [Phase 06 P01]: Figure 2 ctFP example uses dithioester ODE simulation (kadd=1e6, kfrag=1e3, kadd0=1e6, kfrag0=10) with fallback synthetic data path
+- [Phase 06 P01]: Parity PNGs composited via plt.imread to preserve original resolution
 
 ### Pending Todos
 
@@ -110,6 +115,7 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-27T10:22:48.339Z
-Stopped at: Phase 4 context gathered
-Resume file: .planning/phases/04-literature-validation-and-mayo-baseline/04-CONTEXT.md
+Last activity: 2026-04-08
+Last session: 2026-04-08T09:00:00.000Z
+Stopped at: Phase 06 Plan 01 Task 1 complete, Task 2 (human visual review) pending
+Resume file: .planning/phases/06-paper-and-supporting-information/06-01-SUMMARY.md
