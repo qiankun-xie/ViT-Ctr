@@ -115,7 +115,7 @@ Recent decisions affecting current work:
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 260403-gmb | 创建 colab/03-bootstrap-autodl.ipynb — AutoDL版bootstrap notebook | 2026-04-03 | d3e1f3b | [260403-gmb-colab-03-bootstrap-autodl-ipynb-autodl-b](./quick/260403-gmb-colab-03-bootstrap-autodl-ipynb-autodl-b/) |
-| 260408-cdl | 扩充Phase4文献验证集从14到31点（每类RAFT剂7-8个） | 2026-04-08 | pending | [260408-cdl-phase4-30](./quick/260408-cdl-phase4-30/) |
+| 260408-cdl | 扩充Phase4文献验证集从14到31点（每类RAFT剂7-8个） | 2026-04-08 | 836cf26 | [260408-cdl-phase4-30](./quick/260408-cdl-phase4-30/) |
 
 ## Session Continuity
 
