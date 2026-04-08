@@ -28,7 +28,7 @@
   - Figure 1: 概念图/流程图（实验数据 → ctFP编码 → SimpViT → 三参数+CI）
   - Figure 2: ctFP示例图（双通道热力图，展示编码效果）
   - Figure 3: 三参数parity图（3合1复合图）
-  - Figure 4: ML vs Mayo验证图（14个文献点）
+  - Figure 4: ML vs Mayo验证图（77个文献点）
   - Figure 5: 训练曲线（loss vs epoch）
   - Figure 6: 代表性的按RAFT类型分类结果
 - **D-08:** SI图表：残差图（3张）、完整12张按RAFT类型分类parity图、其他补充图表
@@ -92,12 +92,12 @@
 - `figures/residuals_*.png` — 三参数残差图（SI用）
 - `figures/parity_by_class/*.png` — 12张按RAFT类型分类parity图（SI用）
 - `figures/validation/parity_ml_vs_mayo.png` — ML vs Mayo验证图
-- `figures/validation/validation_results.csv` — 14点验证详细数据
+- `figures/validation/validation_results.csv` — 77点验证详细数据
 - `figures/validation/validation_summary.json` — 验证汇总指标
 - `checkpoints/loss_curves.png` — 训练曲线
 
 ### 现有数据（论文数据来源）
-- `data/literature/literature_ctr.csv` — 14个文献Ctr验证点
+- `data/literature/literature_ctr.csv` — 77个文献Ctr验证点
 - `checkpoints/training_log.json` — 训练日志
 - `checkpoints/calibration.json` — Bootstrap校准因子
 - `checkpoints/bootstrap_summary.json` — Bootstrap统计摘要
