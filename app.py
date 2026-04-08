@@ -58,7 +58,7 @@ def load_model():
             _BOOTSTRAP_PATH, map_location="cpu", weights_only=False
         )
         with open(_CAL_PATH) as f:
-            cal_factors = json.load(f)
+            cal_factors = json.load(f)["cal_factors"]
 
     return model, bootstrap_ckpt, cal_factors
 
