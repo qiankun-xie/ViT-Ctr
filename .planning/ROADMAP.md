@@ -124,8 +124,8 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 3. Model Training and Evaluation | 5/5 | Complete | 2026-04-03 |
 | 4. Literature Validation and Mayo Baseline | 2/2 | Complete | 2026-04-04 |
 | 5. Streamlit Web Application | 2/2 | Complete | 2026-04-06 |
-| 6. Paper and Supporting Information | 0/4 | In progress | - |
+| 6. Paper and Supporting Information | 1/4 | In Progress | - |
 
 ---
 *Roadmap created: 2026-03-24*
-*Last updated: 2026-04-06 — Phase 6 planned (4 plans, 3 waves)*
+*Last updated: 2026-04-08 — Phase 06 Plan 01 complete (4 publication figures generated)*

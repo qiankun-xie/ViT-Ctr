@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to execute
-stopped_at: Phase 6 planned — 4 plans, 3 waves, ready to execute
-last_updated: "2026-04-06T08:37:56.071Z"
-last_activity: 2026-04-04
+status: Executing Phase 06
+stopped_at: Phase 06 Plan 01 Task 1 complete, Task 2 pending human review
+last_updated: "2026-04-08T09:00:00.000Z"
+last_activity: 2026-04-08
 progress:
   total_phases: 6
   completed_phases: 5
@@ -24,8 +24,8 @@ See: .planning/PROJECT.md (updated 2026-03-24)
 
 ## Current Position
 
-Phase: 06 (paper-and-supporting-information) — READY
-Plan: 0 of ?
+Phase: 06 (paper-and-supporting-information) — EXECUTING
+Plan: 01 of 4 — Task 1 complete, Task 2 (human visual review) pending
 
 ## Performance Metrics
 
@@ -95,6 +95,8 @@ Recent decisions affecting current work:
 - [Phase 03]: F-distribution JCI with p=3, exact port from ViT-RR deploy.py
 - [Phase 04 revalidation]: Literature dataset expanded from 14 to 77 points (Chong 2003, Moad 2009, Moad 2012)
 - [Phase 04 revalidation]: Inhibition/retardation validated qualitatively (no quantitative literature values exist); dithioester expected to show retardation, others ≈ ideal
+- [Phase 06 P01]: Figure 2 ctFP example uses dithioester ODE simulation (kadd=1e6, kfrag=1e3, kadd0=1e6, kfrag0=10) with fallback synthetic data path
+- [Phase 06 P01]: Parity PNGs composited via plt.imread to preserve original resolution
 
 ### Pending Todos
 
@@ -122,7 +124,7 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last activity: 2026-04-08 - Completed quick task 260408-mdn: 同步Phase6计划文件中14点验证数据为77点重新验证结果
-Last session: 2026-04-06T08:37:56.054Z
-Stopped at: Phase 6 context gathered
-Resume file: .planning/phases/06-paper-and-supporting-information/06-CONTEXT.md
+Last activity: 2026-04-08
+Last session: 2026-04-08T09:00:00.000Z
+Stopped at: Phase 06 Plan 01 Task 1 complete, Task 2 (human visual review) pending
+Resume file: .planning/phases/06-paper-and-supporting-information/06-01-SUMMARY.md
