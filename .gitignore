@@ -1,21 +1,60 @@
+# Python
 __pycache__/
 *.pyc
 *.pyo
+*.pyd
 .pytest_cache/
+*.egg-info/
+dist/
+build/
 
-# 大文件数据集（不上传到GitHub）
+# Data (too large for GitHub)
 data/*.h5
 data/*.npz
 data/*.tar.gz
+data/literature/references/*.pdf
 
-# 训练输出
+# Model checkpoints
 checkpoints/
 *.pth
 *.pt
 
-# Claude工作目录
-.claude/
+# Node.js (not needed)
+node_modules/
+package-lock.json
+package.json
 
-# 日志和临时文件
-*.log
+# IDE / OS
+.claude/
+.vscode/
+.idea/
 .DS_Store
+Thumbs.db
+*.swp
+
+# Temporary files
+*.log
+~$*
+paper/~$*
+
+# Development screenshots & archives
+Screenshot_*.png
+train.png
+vit-ctr-code.tar.gz
+
+# Planning docs (internal)
+.planning/
+
+# Summary docs (superseded by paper/)
+ViT-Ctr_Phase1-5_Summary.docx
+ViT-Ctr_Phase1-5_Summary.pptx
+
+# Claude config
+CLAUDE.md
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# Kiro/superpowers docs
+docs/superpowers/
