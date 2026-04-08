@@ -68,14 +68,15 @@ Plans:
 - [x] 03-05-PLAN.md — Bootstrap UQ: freeze backbone, 200 heads, F-dist JCI, post-hoc calibration
 
 ### Phase 4: Literature Validation and Mayo Baseline
-**Goal**: The trained model is validated against 14 published Ctr values spanning 4 RAFT agent classes and 3 measurement methods, with fold-errors reported and a Mayo equation ODE-fitting baseline comparison included
+**Goal**: The trained model is validated against 77 published Ctr values spanning 4 RAFT agent classes and multiple measurement methods, with fold-errors reported, a Mayo equation ODE-fitting baseline comparison, and qualitative validation of inhibition period and retardation factor predictions
 **Depends on**: Phase 3
 **Requirements**: VAL-01, VAL-02, VAL-03, EVL-04
 **Success Criteria** (what must be TRUE):
-  1. A curated dataset of 14 published Ctr values exists, each annotated with RAFT agent class, measurement method (Mayo / CLD / dispersity), temperature, solvent, and monomer
+  1. A curated dataset of 77 published Ctr values exists, each annotated with RAFT agent class, measurement method (Mayo / CLD / dispersity / kinetic simulation), temperature, solvent, and monomer
   2. Model predictions on the literature set are compared to published values with fold-error computed for each point, and results are broken down by measurement method
   3. The Mayo equation baseline is implemented and evaluated on the same literature set, enabling a direct accuracy comparison between ML and traditional methods
-  4. Paper-ready validation figures (predicted vs. published Ctr, per-class breakdown) are produced
+  4. Paper-ready validation figures (predicted vs. published Ctr, per-class breakdown, inhibition/retardation by RAFT type) are produced
+  5. Inhibition period and retardation factor predictions are qualitatively validated against known RAFT chemistry (dithioester shows retardation; others show ideal behavior)
 **Plans**: 2 plans
 Plans:
 - [x] 04-01-PLAN.md — Literature CSV dataset + Mayo fitter + fold-error module

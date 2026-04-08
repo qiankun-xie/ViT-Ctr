@@ -93,6 +93,8 @@ Recent decisions affecting current work:
 - [Phase 03]: OUTPUT_NAMES constant ['log10_Ctr', 'inhibition_period', 'retardation_factor'] for consistent labeling across evaluation outputs
 - [Phase 03]: Bootstrap uses training-time head fine-tuning (not inference-time input perturbation)
 - [Phase 03]: F-distribution JCI with p=3, exact port from ViT-RR deploy.py
+- [Phase 04 revalidation]: Literature dataset expanded from 14 to 77 points (Chong 2003, Moad 2009, Moad 2012)
+- [Phase 04 revalidation]: Inhibition/retardation validated qualitatively (no quantitative literature values exist); dithioester expected to show retardation, others ≈ ideal
 
 ### Pending Todos
 
