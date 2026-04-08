@@ -115,10 +115,11 @@ Recent decisions affecting current work:
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 260403-gmb | 创建 colab/03-bootstrap-autodl.ipynb — AutoDL版bootstrap notebook | 2026-04-03 | d3e1f3b | [260403-gmb-colab-03-bootstrap-autodl-ipynb-autodl-b](./quick/260403-gmb-colab-03-bootstrap-autodl-ipynb-autodl-b/) |
+| 260408-cdl | 扩充Phase4文献验证集从14到31点（每类RAFT剂7-8个） | 2026-04-08 | pending | [260408-cdl-phase4-30](./quick/260408-cdl-phase4-30/) |
 
 ## Session Continuity
 
-Last activity: 2026-04-04
+Last activity: 2026-04-08 - Completed quick task 260408-cdl: 扩充Phase4文献验证集到30点
 Last session: 2026-04-06T08:37:56.054Z
 Stopped at: Phase 6 context gathered
 Resume file: .planning/phases/06-paper-and-supporting-information/06-CONTEXT.md
