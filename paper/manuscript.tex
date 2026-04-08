@@ -52,14 +52,14 @@ A free web application is provided to enable researchers to obtain predictions w
 
 The RAFT polymerization kinetics were modeled using the method of moments applied to the full RAFT mechanism.\cite{Moad2022} The model tracks three chain populations: active radical chains ($\mu$), dormant RAFT-capped chains ($\nu$), and terminated dead chains ($\lambda$), with zeroth, first, and second moments tracked for each population to enable calculation of $M_\mathrm{n}$ and \DJ.
 
-For trithiocarbonates, xanthates, and dithiocarbamates, a single-equilibrium model with 14 state variables was employed:
+For trithiocarbonates, xanthates, and dithiocarbamates, a single-equilibrium model with 14 state variables was employed. The monomer consumption and representative active chain moment equations are:
 \begin{equation}
     \frac{d[\mathrm{M}]}{dt} = -k_\mathrm{p}[\mathrm{P}^\bullet][\mathrm{M}]
 \end{equation}
 \begin{equation}
-    \frac{d\mu_0}{dt} = k_\mathrm{i}[\mathrm{I}^\bullet][\mathrm{M}] - k_\mathrm{t}\mu_0^2 + k_\mathrm{add}(\nu_0\mu_0 - \mu_0\nu_0)
+    \frac{d\mu_0}{dt} = R_\mathrm{init} + R_\mathrm{reinit} - 2k_\mathrm{t}\mu_0^2 - k_\mathrm{add}\mu_0[\mathrm{CTA}] + k_\mathrm{add}(\mu_0 \nu_0 - \mu_0 \nu_0)
 \end{equation}
-where $k_\mathrm{p}$, $k_\mathrm{i}$, $k_\mathrm{t}$, and $k_\mathrm{add}$ are the propagation, initiation, termination, and addition rate coefficients, respectively. The RAFT exchange is modeled as a moment-swap process: $d\mu_k/dt|_\mathrm{exchange} = k_\mathrm{add}(\mu_0 \nu_k - \mu_k \nu_0)$, reflecting the reversible transfer of the thiocarbonylthio moiety between active and dormant chains.
+where $R_\mathrm{init} = 2fk_\mathrm{d}[\mathrm{I}]$ is the thermal initiation rate, $R_\mathrm{reinit}$ is the re-initiation rate from the R-group released upon addition to the initial CTA, and $k_\mathrm{add}$ is the RAFT addition rate coefficient. The RAFT exchange is modeled as a moment-swap process: $d\mu_k/dt|_\mathrm{exchange} = k_\mathrm{add}(\mu_0 \nu_k - \mu_k \nu_0)$, reflecting the reversible transfer of the thiocarbonylthio moiety between active and dormant chains. The complete set of 14 coupled ODEs is provided in the Supporting Information (Section S1).
 
 For dithioesters, a 16-variable pre-equilibrium model was used to capture the distinct initial and main equilibria characteristic of this RAFT agent class.\cite{BarnerKowollik2006} The pre-equilibrium involves the original RAFT agent reacting with propagating radicals before the main RAFT equilibrium is established, with separate rate coefficients $k_\mathrm{add,0}$ and $k_\mathrm{frag,0}$.
 
@@ -122,6 +122,22 @@ As a baseline, a Mayo equation ODE-fitting approach was implemented: for each li
 %% ============================================================
 \section{Results and Discussion}
 
+The overall workflow of the ViT-Ctr approach is illustrated in Figure~\ref{fig:concept}: experimental RAFT kinetic data are encoded into a dual-channel ctFP image and processed by SimpViT to yield three kinetic parameters with bootstrap confidence intervals. Figure~\ref{fig:ctfp} shows a representative ctFP for a dithioester system, visualizing the dual-channel encoding.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{../figures/fig1_concept.png}
+    \caption{Schematic workflow: experimental RAFT kinetic data ($M_\mathrm{n}$ and \DJ\ vs conversion at varying [CTA]/[M]) are encoded into a dual-channel ctFP image, processed by SimpViT, and decoded into three kinetic parameters with bootstrap confidence intervals.}
+    \label{fig:concept}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\linewidth]{../figures/fig2_ctfp_example.png}
+    \caption{Example chain transfer fingerprint (ctFP) for a representative dithioester RAFT agent. Channel 0 (left): normalized $M_\mathrm{n}/M_\mathrm{n,theory}$. Channel 1 (right): dispersity \DJ\ (clipped at 4.0). The $x$-axis represents [CTA]/[M] and the $y$-axis represents monomer conversion.}
+    \label{fig:ctfp}
+\end{figure}
+
 \subsection{Model Performance on Synthetic Test Set}
 
 The trained SimpViT model achieved strong performance on the held-out synthetic test set across all three output parameters. Parity plots (Figure~\ref{fig:parity}) show tight clustering around the identity line for $\log_{10}(C_\mathrm{tr})$, inhibition period, and retardation factor, confirming that the ctFP encoding retains sufficient information for simultaneous three-parameter extraction.
@@ -152,24 +168,6 @@ The Mayo baseline does exhibit a lower median fold-error (1.02 vs 1.10), reflect
 
 \subsection{Per-RAFT-Agent-Class Analysis}
 
-Figure~\ref{fig:concept} illustrates the overall workflow from experimental data through ctFP encoding to three-parameter prediction with confidence intervals.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\linewidth]{../figures/fig1_concept.png}
-    \caption{Schematic workflow: experimental RAFT kinetic data ($M_\mathrm{n}$ and \DJ\ vs conversion at varying [CTA]/[M]) are encoded into a dual-channel ctFP image, processed by SimpViT, and decoded into three kinetic parameters with bootstrap confidence intervals.}
-    \label{fig:concept}
-\end{figure}
-
-The ctFP encoding is visualized in Figure~\ref{fig:ctfp}, showing the dual-channel representation for a representative dithioester system.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\linewidth]{../figures/fig2_ctfp_example.png}
-    \caption{Example chain transfer fingerprint (ctFP) for a representative dithioester RAFT agent. Channel 0 (left): normalized $M_\mathrm{n}/M_\mathrm{n,theory}$. Channel 1 (right): dispersity \DJ\ (clipped at 4.0). The $x$-axis represents [CTA]/[M] and the $y$-axis represents monomer conversion.}
-    \label{fig:ctfp}
-\end{figure}
-
 Analysis by RAFT agent class reveals that dithioesters, which exhibit the most pronounced inhibition and retardation effects due to their pre-equilibrium kinetics, are well-captured by the model. Figure~\ref{fig:perclass} shows representative per-class results for dithioesters, the most kinetically complex class.
 
 \begin{figure}[htbp]
@@ -193,7 +191,7 @@ The training loss curve (Figure~\ref{fig:training}) shows smooth convergence ove
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\linewidth]{../checkpoints/loss_curves.png}
+    \includegraphics[width=0.8\linewidth]{../figures/loss_curves.png}
     \caption{Training and validation loss curves over 142 epochs. The best model (epoch 126) is indicated. Early stopping prevented overfitting.}
     \label{fig:training}
 \end{figure}
