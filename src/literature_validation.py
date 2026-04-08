@@ -37,6 +37,12 @@ MONOMER_MW = {
     'NVP': 111.14,
     'MA': 86.09,
     'BA': 128.17,
+    'AA': 72.06,
+    'NIPAm': 113.16,
+    'GMA': 142.15,
+    'PEGMA': 300.0,
+    'DADMAC': 161.67,
+    'NVC': 97.12,
 }
 
 RAFT_COLORS = {
