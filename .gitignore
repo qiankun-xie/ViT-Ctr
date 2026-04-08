@@ -58,3 +58,37 @@ notebooks/.ipynb_checkpoints/
 
 # Kiro/superpowers docs
 docs/superpowers/
+
+# Generated notebook images
+notebooks/*.png
+
+# Data intermediate files
+data/ctr_distribution.png
+data/literature/literature_ctr_old.csv
+
+# AutoDL deployment scripts
+scripts/autodl-*.bat
+
+# JS report generators (require node_modules)
+scripts/generate_ppt_report.js
+scripts/generate_word_report.js
+
+# Figures placeholder
+figures/.gitkeep
+
+# Generated notebook images
+notebooks/*.png
+
+# Data intermediate files
+data/ctr_distribution.png
+data/literature/literature_ctr_old.csv
+
+# AutoDL deployment scripts
+scripts/autodl-*.bat
+
+# JS report generators (require node_modules)
+scripts/generate_ppt_report.js
+scripts/generate_word_report.js
+
+# Git keep files
+.gitkeep
