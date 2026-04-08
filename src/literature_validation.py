@@ -46,6 +46,16 @@ RAFT_COLORS = {
     'dithiocarbamate': '#8491B4',
 }
 
+EXPECTED_RESULT_COLUMNS = [
+    'id', 'raft_type', 'method',
+    'ctr_true', 'log10_ctr_true',
+    'ml_log10_ctr', 'mayo_log10_ctr',
+    'ml_fold_error', 'mayo_fold_error',
+    'ml_ci_low', 'ml_ci_high', 'ml_std',
+    'ml_inhibition', 'ml_retardation',
+    'ml_inhibition_std', 'ml_retardation_std',
+]
+
 
 # 训练参数分布范围（与 dataset_generator.py PARAM_BOUNDS 一致）
 _KINETIC_BOUNDS = {
@@ -297,6 +307,10 @@ def run_validation_pipeline(csv_path, model_path, bootstrap_path=None, calibrati
             'ml_ci_low': ci_low,
             'ml_ci_high': ci_high,
             'ml_std': float(ml_std[0]),
+            'ml_inhibition': float(ml_median[1]),
+            'ml_retardation': float(ml_median[2]),
+            'ml_inhibition_std': float(ml_std[1]),
+            'ml_retardation_std': float(ml_std[2]),
         })
 
     results_df = pd.DataFrame(results)
