@@ -107,9 +107,9 @@ Plans:
   3. Route A (molecular structure -> Ctr via SMILES) is included as a Discussion/Conclusion future-directions section, not as a standalone results claim
 **Plans**: 4 plans
 Plans:
-- [ ] 06-01-PLAN.md — Figure generation (concept diagram, ctFP example, composite parity, TOC graphic)
-- [ ] 06-02-PLAN.md — LaTeX manuscript (IMRAD + Route A as future work)
-- [ ] 06-03-PLAN.md — Supporting Information (ODE derivation matching code + evaluation details)
+- [x] 06-01-PLAN.md — Figure generation (concept diagram, ctFP example, composite parity, TOC graphic)
+- [x] 06-02-PLAN.md — LaTeX manuscript (IMRAD + Route A as future work)
+- [x] 06-03-PLAN.md — Supporting Information (ODE derivation matching code + evaluation details)
 - [ ] 06-04-PLAN.md — Word versions (English + Chinese .docx)
 
 ## Progress
