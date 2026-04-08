@@ -29,12 +29,12 @@
 
 | File | Content | Paper Use |
 |------|---------|-----------|
-| `figures/validation/validation_results.csv` | 14-point literature validation with ML and Mayo predictions | Results Table / Fig 4 |
-| `figures/validation/validation_summary.json` | ML: R²=0.991, median fold-error=1.17; Mayo: R²=0.825, median fold-error=1.01 | Results text |
+| `figures/validation/validation_results.csv` | 77-point literature validation with ML and Mayo predictions | Results Table / Fig 4 |
+| `figures/validation/validation_summary.json` | ML: R²=0.968, RMSE=0.181, median fold-error=1.10, 92.2% within 2×, 100% within 10×; Mayo: R²=0.502, RMSE=0.715, median fold-error=1.02 | Results text |
 | `checkpoints/calibration.json` | Bootstrap calibration factors [100.0, 53.7, 3.5] | Methods/SI |
 | `checkpoints/bootstrap_summary.json` | 200 heads, 5 epochs/head, RTX 4090, 9h17m | Methods/SI |
 | `checkpoints/training_log.json` | 142 epochs, final val_loss=0.389 | Results/SI |
-| `data/literature/literature_ctr.csv` | 14 published Ctr values with references | Results Table |
+| `data/literature/literature_ctr.csv` | 77 published Ctr values with references | Results Table |
 
 ### 1.4 Source Code (Methods Description Basis)
 
@@ -55,9 +55,9 @@
 - Dataset: ~973K samples (778K train / 97K val / 97K test), 4 RAFT types
 - Final val_loss: 0.389
 
-### 2.2 Literature Validation (14 Points)
-- **ML model:** R²=0.991, RMSE(log10)=0.126, median fold-error=1.17, 93% within 2×, 100% within 10×
-- **Mayo baseline:** R²=0.825, RMSE(log10)=0.558, median fold-error=1.01, 86% within 2×, 93% within 10×
+### 2.2 Literature Validation (77 Points)
+- **ML model:** R²=0.968, RMSE(log10)=0.181, median fold-error=1.10, 92.2% within 2×, 100% within 10×
+- **Mayo baseline:** R²=0.502, RMSE(log10)=0.715, median fold-error=1.02, 85.7% within 2×, 90.9% within 10×
 - ML outperforms Mayo on RMSE and R² despite Mayo having lower median fold-error (Mayo benefits from fixed "ideal" kinetic params)
 
 ### 2.3 Bootstrap UQ
@@ -68,7 +68,7 @@
 - **Note:** log10_Ctr coverage at 69.2% (not 95%) even after calibration — this is a known limitation that must be discussed honestly
 
 ### 2.4 Literature Dataset Composition
-- 14 published Ctr values from 8 references
+- 77 published Ctr values from expanded reference set
 - 4 RAFT types: dithioester (4), trithiocarbonate (4), xanthate (3), dithiocarbamate (3)
 - 3 measurement methods: Mayo (7), Dispersity (4), CLD (3)
 - All at 60°C, bulk polymerization
@@ -172,7 +172,7 @@ Since no LaTeX compiler is available, the practical approach is:
 ### 5.3 Dependencies
 - All Phase 1-5 artifacts are complete and available
 - All figures exist except concept diagram (Fig 1), ctFP example (Fig 2), and TOC graphic
-- Validation data is finalized (14 points)
+- Validation data is finalized (77 points)
 
 ### 5.4 Risks
 - **No local LaTeX:** Cannot compile .tex locally — must use Overleaf or install TeX Live
@@ -187,7 +187,7 @@ Since no LaTeX compiler is available, the practical approach is:
 - **ODE consistency:** Every equation in SI LaTeX must have a corresponding line in `raft_ode.py` — verify by side-by-side comparison
 - **Figure accuracy:** All figures in paper must match the actual PNG files in `figures/`
 - **Metrics accuracy:** All numbers cited in text must match `validation_summary.json` and `training_log.json`
-- **Reference completeness:** All 14 literature entries must appear in bibliography
+- **Reference completeness:** All 77 literature entries must appear in bibliography
 - **Three-parameter claim scope:** Must be qualified to dithioester systems where retardation is meaningful
 
 ### 6.2 Acceptance Criteria
