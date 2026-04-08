@@ -324,6 +324,7 @@ def run_validation_pipeline(csv_path, model_path, bootstrap_path=None, calibrati
         json.dump(summary_dict, f_out, indent=2)
 
     plot_parity_ml_vs_mayo(results_df, output_dir)
+    plot_inhibition_retardation_by_class(results_df, output_dir)
 
     print(f"\nValidated {len(results_df)} / {len(df)} literature points (ensemble n={n_ensemble})")
     return results_df, summary_dict
@@ -376,6 +377,45 @@ def plot_parity_ml_vs_mayo(results_df, output_dir='figures/validation'):
     ax.set_title('ML vs Mayo Baseline: Literature Ctr Validation', fontsize=12)
 
     fig.savefig(os.path.join(output_dir, 'parity_ml_vs_mayo.png'), dpi=300, bbox_inches='tight')
+    plt.close(fig)
+
+
+def plot_inhibition_retardation_by_class(results_df, output_dir='figures/validation'):
+    """生成inhibition period和retardation factor按RAFT类型分组的strip图。"""
+    import matplotlib.pyplot as plt
+
+    os.makedirs(output_dir, exist_ok=True)
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+
+    raft_order = ['dithioester', 'trithiocarbonate', 'xanthate', 'dithiocarbamate']
+
+    for ax, col, ylabel, ref_val, title in [
+        (axes[0], 'ml_inhibition', 'Predicted Inhibition Period', 0.0,
+         'Inhibition Period by RAFT Type'),
+        (axes[1], 'ml_retardation', 'Predicted Retardation Factor', 1.0,
+         'Retardation Factor by RAFT Type'),
+    ]:
+        ax.axhline(ref_val, color='gray', ls='--', lw=1, alpha=0.7,
+                    label=f'Reference ({ref_val})')
+        for i, rt in enumerate(raft_order):
+            sub = results_df[results_df['raft_type'] == rt]
+            if sub.empty:
+                continue
+            x = np.full(len(sub), i) + np.random.default_rng(42).uniform(-0.15, 0.15, len(sub))
+            ax.scatter(x, sub[col].values, color=RAFT_COLORS[rt], s=40, alpha=0.7, zorder=3)
+            mean_val = sub[col].mean()
+            ax.plot([i - 0.25, i + 0.25], [mean_val, mean_val],
+                    color=RAFT_COLORS[rt], lw=2.5, zorder=4)
+
+        ax.set_xticks(range(len(raft_order)))
+        ax.set_xticklabels([rt[:6] for rt in raft_order], fontsize=9)
+        ax.set_ylabel(ylabel, fontsize=11)
+        ax.set_title(title, fontsize=11)
+        ax.legend(fontsize=8)
+
+    fig.tight_layout()
+    fig.savefig(os.path.join(output_dir, 'inhibition_retardation_by_class.png'),
+                dpi=300, bbox_inches='tight')
     plt.close(fig)
 
 

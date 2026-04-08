@@ -47,3 +47,45 @@ def test_pipeline_results_have_inhibition_retardation_columns():
     from literature_validation import EXPECTED_RESULT_COLUMNS
     for col in expected_cols:
         assert col in EXPECTED_RESULT_COLUMNS, f"Missing column: {col}"
+
+
+def test_plot_inhibition_retardation_by_class(tmp_path):
+    """验证inhibition/retardation分类图生成无报错。"""
+    from literature_validation import plot_inhibition_retardation_by_class
+    rng = np.random.default_rng(42)
+    rows = []
+    for raft_type in ['dithioester', 'trithiocarbonate', 'xanthate', 'dithiocarbamate']:
+        for i in range(5):
+            inh = rng.uniform(0.05, 0.3) if raft_type == 'dithioester' else rng.uniform(0, 0.02)
+            ret = rng.uniform(0.3, 0.8) if raft_type == 'dithioester' else rng.uniform(0.9, 1.0)
+            rows.append({
+                'raft_type': raft_type,
+                'ml_inhibition': inh,
+                'ml_retardation': ret,
+                'ml_inhibition_std': 0.01,
+                'ml_retardation_std': 0.02,
+            })
+    df = pd.DataFrame(rows)
+    plot_inhibition_retardation_by_class(df, str(tmp_path))
+    assert (tmp_path / 'inhibition_retardation_by_class.png').exists()
+
+
+def test_plot_inhibition_retardation_by_class(tmp_path):
+    """验证inhibition/retardation分类图生成无报错。"""
+    from literature_validation import plot_inhibition_retardation_by_class
+    rng = np.random.default_rng(42)
+    rows = []
+    for raft_type in ['dithioester', 'trithiocarbonate', 'xanthate', 'dithiocarbamate']:
+        for i in range(5):
+            inh = rng.uniform(0.05, 0.3) if raft_type == 'dithioester' else rng.uniform(0, 0.02)
+            ret = rng.uniform(0.3, 0.8) if raft_type == 'dithioester' else rng.uniform(0.9, 1.0)
+            rows.append({
+                'raft_type': raft_type,
+                'ml_inhibition': inh,
+                'ml_retardation': ret,
+                'ml_inhibition_std': 0.01,
+                'ml_retardation_std': 0.02,
+            })
+    df = pd.DataFrame(rows)
+    plot_inhibition_retardation_by_class(df, str(tmp_path))
+    assert (tmp_path / 'inhibition_retardation_by_class.png').exists()
